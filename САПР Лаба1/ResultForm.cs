@@ -26,7 +26,7 @@ namespace SAPR_Laba1
                 richTextBox1.Text += "Страница " + i.ToString() + "\n";
                 for (int j=0;j<algo.pages[i].graphSymbols.Count;j++)
                 {
-                    richTextBox1.Text += "Из узла " + j.ToString() + "\n        выходят   ";
+                    richTextBox1.Text += "Из узла " + algo.pages[i].graphSymbols[j].ID.ToString() + "\n        выходят   ";
                     for (int k=0; k < algo.pages[i].graphSymbols[j].outgoingNodes.Count;k++)
                     {
                         richTextBox1.Text += algo.pages[i].graphSymbols[j].outgoingNodes[k].ID.ToString() + "  ";

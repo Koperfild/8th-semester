@@ -158,8 +158,11 @@ namespace SAPR_Laba1
                     continue;
                 }
                 else
+                {
+                    maxKcvNode.page = currPage;
                     //Добавляем к граф символам текущей страницы внешний граф символ связанныq с текущей страницей с макс Ксв
                     currPage.graphSymbols.Add(maxKcvNode);
+                }
             }
             //Если первая страница получилась несвязанной ни с чем и на ней только начальный граф символ
             if (pages.Count == 1 && pages[0].graphSymbols[0].incomingNodes.Count ==0 && pages[0].graphSymbols[0].outgoingNodes.Count ==0)
