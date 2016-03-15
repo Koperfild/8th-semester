@@ -61,9 +61,4 @@ namespace SAPR_Laba1
             f1.BeginNodeNumber.DataBindings.Add("Value", this, "beginNodeNumber");
         }
     }
-    public class Demo
-    {
-        public string a { get; set; }
-        public string b { get; set; }
-    }
 }

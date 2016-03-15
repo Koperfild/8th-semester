@@ -9,12 +9,9 @@ namespace SAPR_Laba1
     public class AlgorithmScheme
     {
         public List<Page> pages { get; set; }
-        Data data;
         public AlgorithmScheme() { }
         public AlgorithmScheme(int[,] IncidenceMatrix, int beginNodeNumber, int p)
         {
-            // delete pages = new List<Page>();
-            //this.data = data;
             Calc(IncidenceMatrix, beginNodeNumber, p);
         }
         public class Page
@@ -82,10 +79,6 @@ namespace SAPR_Laba1
                     }
                 }
             }
-            //int nodeQuantity = IncidenceMatrix.GetLength(0);
-            //Тут короче сделать округление в большую сторону
-            //l- число страниц, вроде как не нужно.Закомменчу
-            //int l = (double)nodeQuantity / (double)p;
 
             //Вводим начальный узел (стартовый)
             Node beginNode = nodes[beginNodeNumber];
@@ -127,19 +120,8 @@ namespace SAPR_Laba1
             //Цикл пока есть нераспределённые внешние узлы, связанные с текущей страницей
             while ((currPageAssociatedNodes = getListOfAssociatedNodes(currPage)).Count > 0)
             {
-                //maxKcvNode = currPageAssociatedNodes.Max<Node>();
                 maxKcvNode = Node.MaxNode(currPageAssociatedNodes, currPage);
-                /*
-                //Сортируем внешние узлы связанные с текущей страницей по их Ксв (коэф-т связности)
-                currPageAssociatedNodes.Sort((Node x, Node y) =>
-                {
-                    if (x == null && y == null) return 0;
-                    else if (x == null) return -1;
-                    else if (y == null) return 1;
-                    else return Kcv(currPage, x).CompareTo(Kcv(currPage, y));
-                });
-                */
-
+               //Если число символов на странице достигло максимума
                 if (currPage.graphSymbols.Count == p)
                 {
                     //Увеличиваем текущий номер страницы
@@ -170,8 +152,6 @@ namespace SAPR_Laba1
             return pages;
         }
         
-        // delete  public IEnumerable<int> m
-
         /// <summary>
         /// Функция расчёта коэффициента связности. В моей интерпретации проверяется связь не со всеми страницами а лишь с текущей, т.е. будет другая d+. d+ включает лишь связи с текущей страницей.
         /// </summary>

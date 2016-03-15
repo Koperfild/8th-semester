@@ -58,12 +58,6 @@ namespace SAPR_Laba1
             this.DataGridView.AutoSizeColumnsMode =
                 DataGridViewAutoSizeColumnsMode.AllCells;
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             try {
@@ -75,7 +69,6 @@ namespace SAPR_Laba1
             {
                 MessageBox.Show(ex.Message, "Try again!");
             }
-            
         }
 
         private void dataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
