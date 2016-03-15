@@ -20,6 +20,7 @@ namespace SAPR_Laba1
         }
         public void FillText()
         {
+            
             for (int i=0;i<algo.pages.Count;i++)
             {
                 richTextBox1.Text += "Страница " + i.ToString() + "\n";

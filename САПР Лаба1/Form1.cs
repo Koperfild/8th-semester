@@ -45,17 +45,52 @@ namespace SAPR_Laba1
         public Form1()
         {
             InitializeComponent();
+            data = new Data(this);
+            foreach(DataGridViewRow row in this.DataGridView.Rows)
+            {
+                row.HeaderCell.Value = row.Index.ToString();
+            }
+            // Resize the master DataGridView columns to fit the newly loaded data.
+            this.DataGridView.AutoResizeColumns();
+
+            // Configure the details DataGridView so that its columns automatically
+            // adjust their widths when the data changes.
+            this.DataGridView.AutoSizeColumnsMode =
+                DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            data = new Data(this);
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AlgorithmScheme algo = new AlgorithmScheme(Data.IncidenceMatrix, (int)BeginNodeNumber.Value, (int)P.Value);
-            ResultForm fres = new ResultForm(algo);
+            try {
+                AlgorithmScheme algo = new AlgorithmScheme(Data.IncidenceMatrix, (int)BeginNodeNumber.Value, (int)P.Value);
+                ResultForm fres = new ResultForm(algo);
+                fres.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Try again!");
+            }
+            
+        }
+
+        private void dataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            DataGridViewCellStyle style = new DataGridViewCellStyle();
+            style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            //*** Add row number to each row
+            foreach (DataGridViewRow row in DataGridView.Rows)
+            {
+                row.HeaderCell.Value = row.Index.ToString();
+                row.HeaderCell.Style = style;
+                row.Resizable = DataGridViewTriState.False;
+            }
+            DataGridView.ResumeLayout();
         }
     }
 }

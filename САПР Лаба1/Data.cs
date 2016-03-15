@@ -51,7 +51,7 @@ namespace SAPR_Laba1
             };
             string[] columnNumbers = new string[IncidenceMatrix.GetLength(1)];
             for (int i = 0; i < columnNumbers.Length; i++)
-                columnNumbers[i] = (i + 1).ToString();
+                columnNumbers[i] = i.ToString();
             f1.Arr = new Mommo.Data.ArrayDataView(IncidenceMatrix, columnNumbers);
             f1.BindingSource1 = new BindingSource();
             f1.BindingSource1.DataSource = f1.Arr;

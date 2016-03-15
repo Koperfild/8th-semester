@@ -15,7 +15,7 @@ namespace SAPR_Laba1
         {
             // delete pages = new List<Page>();
             //this.data = data;
-            Calc(IncidenceMatrix,beginNodeNumber, p);
+            Calc(IncidenceMatrix, beginNodeNumber, p);
         }
         public class Page
         {
@@ -26,7 +26,7 @@ namespace SAPR_Laba1
                 graphSymbols = new List<Node>();
             }
         }
-        public class Node:IComparable<Node>
+        public class Node
         {
             public Page page;
             public int ID;
@@ -40,12 +40,18 @@ namespace SAPR_Laba1
             }
             public NodeType type;
             public enum NodeType { Terminator, Data, Cycle, Solution }
-
-            public int CompareTo(Node other)
+            public static Node MaxNode(List<Node> nodes, Page currPage)
             {
-                ДЕЛАТЬ. ИЛИ ЖЕ Где MAX<Node>() править
-                return Kcv()
-                throw new NotImplementedException();
+                if (nodes.Count == 0 || nodes == null)
+                    return null;
+
+                Node maxNode = nodes[0];
+                for (int i = 0; i < nodes.Count; i++)
+                {
+                    if (AlgorithmScheme.Kcv(currPage, nodes[i]) > AlgorithmScheme.Kcv(currPage,maxNode))
+                        maxNode = nodes[i];
+                }
+                return maxNode;
             }
         }
         /// <summary>
@@ -83,7 +89,14 @@ namespace SAPR_Laba1
 
             //Вводим начальный узел (стартовый)
             Node beginNode = nodes[beginNodeNumber];
-            this.pages = splitNodesToPages(beginNode, p);                      
+            try
+            {
+                this.pages = splitNodesToPages(beginNode, p);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
         /// <summary>
         /// 
@@ -114,8 +127,8 @@ namespace SAPR_Laba1
             //Цикл пока есть нераспределённые внешние узлы, связанные с текущей страницей
             while ((currPageAssociatedNodes = getListOfAssociatedNodes(currPage)).Count > 0)
             {
-                maxKcvNode = currPageAssociatedNodes.Max<Node>();
-
+                //maxKcvNode = currPageAssociatedNodes.Max<Node>();
+                maxKcvNode = Node.MaxNode(currPageAssociatedNodes, currPage);
                 /*
                 //Сортируем внешние узлы связанные с текущей страницей по их Ксв (коэф-т связности)
                 currPageAssociatedNodes.Sort((Node x, Node y) =>
@@ -148,6 +161,9 @@ namespace SAPR_Laba1
                     //Добавляем к граф символам текущей страницы внешний граф символ связанныq с текущей страницей с макс Ксв
                     currPage.graphSymbols.Add(maxKcvNode);
             }
+            //Если первая страница получилась несвязанной ни с чем и на ней только начальный граф символ
+            if (pages.Count == 1 && pages[0].graphSymbols[0].incomingNodes.Count ==0 && pages[0].graphSymbols[0].outgoingNodes.Count ==0)
+                throw new Exception("Введена пустая граф схема");
             return pages;
         }
         

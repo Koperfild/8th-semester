@@ -69,8 +69,10 @@ namespace SAPR_Laba1
             this.dataGridView.Location = new System.Drawing.Point(30, 66);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowHeadersWidth = 77;
             this.dataGridView.Size = new System.Drawing.Size(886, 468);
             this.dataGridView.TabIndex = 2;
+            this.dataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView_DataBindingComplete);
             // 
             // button1
             // 
@@ -102,7 +104,7 @@ namespace SAPR_Laba1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 827);
+            this.ClientSize = new System.Drawing.Size(1274, 827);
             this.Controls.Add(this.GraphSymbolsCountLabel);
             this.Controls.Add(this.p);
             this.Controls.Add(this.button1);
