@@ -8,68 +8,82 @@ namespace SAPR_Laba1
 {
     public class AlgorithmScheme
     {
-        List<Page> pages;
-        Form1 f;
-        public AlgorithmScheme(byte[][] IncidenceMatrix,Form1 f1)
+        public List<Page> pages { get; set; }
+        Data data;
+        public AlgorithmScheme() { }
+        public AlgorithmScheme(int[,] IncidenceMatrix, int beginNodeNumber, int p)
         {
-            pages = new List<Page>();
-            f = f1;
-            Calc();
+            // delete pages = new List<Page>();
+            //this.data = data;
+            Calc(IncidenceMatrix,beginNodeNumber, p);
         }
         public class Page
         {
             public List<Node> graphSymbols;
             public int number;
+            public Page()
+            {
+                graphSymbols = new List<Node>();
+            }
         }
-        public class Node
+        public class Node:IComparable<Node>
         {
             public Page page;
+            public int ID;
             public string text;
             public List<Node> outgoingNodes;
             public List<Node> incomingNodes;
+            public Node()
+            {
+                outgoingNodes = new List<Node>();
+                incomingNodes = new List<Node>();
+            }
             public NodeType type;
             public enum NodeType { Terminator, Data, Cycle, Solution }
+
+            public int CompareTo(Node other)
+            {
+                ДЕЛАТЬ. ИЛИ ЖЕ Где MAX<Node>() править
+                return Kcv()
+                throw new NotImplementedException();
+            }
         }
-        
-        public void Calc(byte[][] IncidenceMatrix)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="IncidenceMatrix"></param>
+        /// <param name="beginNodeNumber"></param>
+        /// <param name="p">Max graph symbols count per page</param>
+        public void Calc(int[,] IncidenceMatrix, int beginNodeNumber, int p)
         {
             List<Node> nodes = new List<Node>();
             //Делаем список всех узлов
-            for (int i=0;i<IncidenceMatrix.Length;i++)
-                nodes.Add(new Node());
+            for (int i=0;i<IncidenceMatrix.GetLength(0);i++)
+                for (int j=0;j<IncidenceMatrix.GetLength(1);j++)
+                    //Присваиваем каждому узлу ID в соответствие с матрицей инцидентности
+                    nodes.Add(new Node() { ID = i*IncidenceMatrix.GetLength(0) + j});
 
             //По матрице инцидентности прописываем связи между узлами
-            for (int i = 0; i < IncidenceMatrix.Length; i++)
+            for (int i = 0; i < IncidenceMatrix.GetLength(0); i++)
             {
                 
-                for (int j = 0; j < IncidenceMatrix[i].Length; j++)
+                for (int j = 0; j < IncidenceMatrix.GetLength(1); j++)
                 {
-                    if (IncidenceMatrix[i][j] == 1)
+                    if (IncidenceMatrix[i,j] == 1)
                     {
                         nodes[i].outgoingNodes.Add(nodes[j]);
                         nodes[j].incomingNodes.Add(nodes[i]);
                     }
                 }
             }
-
-            //Вводим начальный узел (стартовый)
-            int beginnodeNumber = Begi;
-
-            !!!!!!!!-Делать ввод с формы номера начального узла!!!!!!
-            int.TryParse(Console.ReadLine(), out beginnodeNumber);
-            Node beginNode = nodes[beginnodeNumber];
-            int nodeQuantity = IncidenceMatrix.Length;
-            //p-макс кол-во граф символов на страницу
-            int p;
-
+            //int nodeQuantity = IncidenceMatrix.GetLength(0);
             //Тут короче сделать округление в большую сторону
             //l- число страниц, вроде как не нужно.Закомменчу
             //int l = (double)nodeQuantity / (double)p;
 
-            this.pages = splitNodesToPages(beginNode, p);
-            //Счётчик страниц
-            //int k = 1;
-            
+            //Вводим начальный узел (стартовый)
+            Node beginNode = nodes[beginNodeNumber];
+            this.pages = splitNodesToPages(beginNode, p);                      
         }
         /// <summary>
         /// 
@@ -137,7 +151,7 @@ namespace SAPR_Laba1
             return pages;
         }
         
-        public IEnumerable<int> m
+        // delete  public IEnumerable<int> m
 
         /// <summary>
         /// Функция расчёта коэффициента связности. В моей интерпретации проверяется связь не со всеми страницами а лишь с текущей, т.е. будет другая d+. d+ включает лишь связи с текущей страницей.
@@ -145,7 +159,7 @@ namespace SAPR_Laba1
         /// <param name="currentnode">Узел для которого рассчитывается коэффициент</param>
         /// <param name="page"></param>
         /// <returns>Коэф-т связности 0<=Kcv<=1</returns>
-        public double Kcv(Page currpage, Node nodetocalc)
+        public static double Kcv(Page currpage, Node nodetocalc)
         {
             int AllNodeAssociationsQuantity = nodetocalc.outgoingNodes.Count + nodetocalc.incomingNodes.Count;
             int dplus=0;
@@ -184,6 +198,8 @@ namespace SAPR_Laba1
                 }
             }
             return outFromPageNodes;
-        }        
+        }
+        
+         
     }
 }
