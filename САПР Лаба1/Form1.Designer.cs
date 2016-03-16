@@ -90,6 +90,11 @@ namespace SAPR_Laba1
             this.p.Name = "p";
             this.p.Size = new System.Drawing.Size(120, 22);
             this.p.TabIndex = 4;
+            this.p.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // GraphSymbolsCountLabel
             // 

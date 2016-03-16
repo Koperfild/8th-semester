@@ -30,6 +30,7 @@ namespace SAPR_Laba1
             public string text;
             public List<Node> outgoingNodes;
             public List<Node> incomingNodes;
+            public double Kcv; //Ксв перед добавлением граф символа на страницу. Пришлось ввести,т.к. нужно потом при выводе результатов. При этом Ксв нельзя соотнести с узлом. Каждый раз Ксв разный, поэтому не хотел вводить это поле
             public Node()
             {
                 outgoingNodes = new List<Node>();
@@ -108,6 +109,7 @@ namespace SAPR_Laba1
             Page firstpage = new Page();
             int number = 0;
             firstpage.number = number;
+            beginNode.page = firstpage;
             //Добавляем на первую страницу начальный узел
             firstpage.graphSymbols.Add(beginNode);
             pages.Add(firstpage);
@@ -121,6 +123,8 @@ namespace SAPR_Laba1
             while ((currPageAssociatedNodes = getListOfAssociatedNodes(currPage)).Count > 0)
             {
                 maxKcvNode = Node.MaxNode(currPageAssociatedNodes, currPage);
+                //Добавляем в граф символ посчитанный Ксв. Можно и в Node.MaxNode, но делаю тут для явности
+                maxKcvNode.Kcv = Kcv(currPage, maxKcvNode);
                //Если число символов на странице достигло максимума
                 if (currPage.graphSymbols.Count == p)
                 {
@@ -136,6 +140,7 @@ namespace SAPR_Laba1
                             maxKcvNode
                         }
                     };
+                    maxKcvNode.page = currPage;
                     pages.Add(currPage);
                     continue;
                 }
@@ -173,7 +178,9 @@ namespace SAPR_Laba1
                 if (nodetocalc.outgoingNodes[i].page == currpage)
                     dplus += 1;
             }
-            return (double)dplus / AllNodeAssociationsQuantity;
+            double res;
+            res = (double)dplus / AllNodeAssociationsQuantity;
+            return res;
         }
         /// <summary>
         /// Получает список связанных со всеми узлами страницы внешних узлов. Нужно для включения внешних узлов с макс Ксв в эту страницу

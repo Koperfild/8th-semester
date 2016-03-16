@@ -37,6 +37,8 @@ namespace SAPR_Laba1
                         richTextBox1.Text += algo.pages[i].graphSymbols[j].incomingNodes[k].ID.ToString() + " ";
                     }
                     richTextBox1.Text += "\n";
+                    richTextBox1.Text += "Kcv = " + algo.pages[i].graphSymbols[j].Kcv;
+                    richTextBox1.Text += "\n";
                 }
             }
         }
