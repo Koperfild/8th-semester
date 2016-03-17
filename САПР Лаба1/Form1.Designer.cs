@@ -46,28 +46,33 @@ namespace SAPR_Laba1
             // 
             // beginNodeNumber
             // 
-            this.beginNodeNumber.Location = new System.Drawing.Point(275, 623);
+            this.beginNodeNumber.BackColor = System.Drawing.Color.Fuchsia;
+            this.beginNodeNumber.Font = new System.Drawing.Font("Impact", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.beginNodeNumber.Location = new System.Drawing.Point(255, 542);
             this.beginNodeNumber.Margin = new System.Windows.Forms.Padding(4);
             this.beginNodeNumber.Name = "beginNodeNumber";
-            this.beginNodeNumber.Size = new System.Drawing.Size(160, 22);
-            this.beginNodeNumber.TabIndex = 0;            
+            this.beginNodeNumber.Size = new System.Drawing.Size(160, 28);
+            this.beginNodeNumber.TabIndex = 0;
             this.beginNodeNumber.ValueChanged += new System.EventHandler(this.beginNodeNumber_ValueChanged);
             // 
             // beginNodelbl
             // 
             this.beginNodelbl.AutoSize = true;
-            this.beginNodelbl.Location = new System.Drawing.Point(272, 577);
+            this.beginNodelbl.Font = new System.Drawing.Font("Impact", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.beginNodelbl.Location = new System.Drawing.Point(252, 496);
             this.beginNodelbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.beginNodelbl.Name = "beginNodelbl";
-            this.beginNodelbl.Size = new System.Drawing.Size(170, 17);
+            this.beginNodelbl.Size = new System.Drawing.Size(198, 21);
             this.beginNodelbl.TabIndex = 1;
             this.beginNodelbl.Text = "Начальный граф символ";
             // 
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(30, 66);
+            this.dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridView.Location = new System.Drawing.Point(13, 12);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 77;
@@ -77,19 +82,23 @@ namespace SAPR_Laba1
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(713, 659);
+            this.button1.BackColor = System.Drawing.Color.Fuchsia;
+            this.button1.Font = new System.Drawing.Font("Impact", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(663, 519);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 66);
             this.button1.TabIndex = 3;
             this.button1.Text = "Work bitch";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // p
             // 
-            this.p.Location = new System.Drawing.Point(51, 623);
+            this.p.BackColor = System.Drawing.Color.Fuchsia;
+            this.p.Font = new System.Drawing.Font("Impact", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.p.Location = new System.Drawing.Point(31, 542);
             this.p.Name = "p";
-            this.p.Size = new System.Drawing.Size(120, 22);
+            this.p.Size = new System.Drawing.Size(120, 28);
             this.p.TabIndex = 4;
             this.p.Value = new decimal(new int[] {
             3,
@@ -100,9 +109,10 @@ namespace SAPR_Laba1
             // GraphSymbolsCountLabel
             // 
             this.GraphSymbolsCountLabel.AutoSize = true;
-            this.GraphSymbolsCountLabel.Location = new System.Drawing.Point(48, 577);
+            this.GraphSymbolsCountLabel.Font = new System.Drawing.Font("Impact", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GraphSymbolsCountLabel.Location = new System.Drawing.Point(28, 496);
             this.GraphSymbolsCountLabel.Name = "GraphSymbolsCountLabel";
-            this.GraphSymbolsCountLabel.Size = new System.Drawing.Size(129, 34);
+            this.GraphSymbolsCountLabel.Size = new System.Drawing.Size(146, 42);
             this.GraphSymbolsCountLabel.TabIndex = 5;
             this.GraphSymbolsCountLabel.Text = "Max graph symbols\n count per page";
             // 
@@ -110,13 +120,15 @@ namespace SAPR_Laba1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1274, 827);
+            this.BackColor = System.Drawing.Color.Chartreuse;
+            this.ClientSize = new System.Drawing.Size(908, 596);
             this.Controls.Add(this.GraphSymbolsCountLabel);
             this.Controls.Add(this.p);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.beginNodelbl);
             this.Controls.Add(this.beginNodeNumber);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";

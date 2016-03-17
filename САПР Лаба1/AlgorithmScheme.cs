@@ -45,10 +45,26 @@ namespace SAPR_Laba1
                     return null;
 
                 Node maxNode = nodes[0];
+                double kcv1, kcv2;
                 for (int i = 0; i < nodes.Count; i++)
                 {
-                    if (AlgorithmScheme.Kcv(currPage, nodes[i]) > AlgorithmScheme.Kcv(currPage,maxNode))
+
+                    if ( (kcv1=AlgorithmScheme.Kcv(currPage, nodes[i])) > (kcv2=AlgorithmScheme.Kcv(currPage,maxNode)))
                         maxNode = nodes[i];
+                    else if (kcv1 == kcv2)
+                    {
+                        int currNodeAssociations = nodes[i].incomingNodes.Count + nodes[i].outgoingNodes.Count;
+                        int maxNodeAssociations = maxNode.incomingNodes.Count + maxNode.outgoingNodes.Count;
+
+                        if (kcv1 > 0.5)
+                            if (currNodeAssociations > maxNodeAssociations)
+                                maxNode = nodes[i];
+
+                        if (kcv1 < 0.5)
+                            if (currNodeAssociations < maxNodeAssociations)
+                                maxNode = nodes[i];
+                        //if kcv1== 0.5не меняем maxNode
+                    }
                 }
                 return maxNode;
             }
@@ -203,7 +219,5 @@ namespace SAPR_Laba1
             }
             return outFromPageNodes;
         }
-        
-         
     }
 }
