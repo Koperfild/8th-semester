@@ -12,6 +12,7 @@ namespace SAPR_Laba1
         public AlgorithmScheme() { }
         public AlgorithmScheme(int[,] IncidenceMatrix, int beginNodeNumber, int p)
         {
+            
             Calc(IncidenceMatrix, beginNodeNumber, p);
         }
         public class Page
@@ -100,10 +101,7 @@ namespace SAPR_Laba1
         /// <returns></returns>
         public List<Page> splitNodesToPages(Node beginNode, int p)
         {
-            if (p < 1)
-                throw new Exception("Wrong max count of graph symbols per page");
-            if (beginNode == null)
-                throw new Exception("Not specified beginNode");
+            
             //Создаём первую страницу
             List<Page> pages = new List<Page>();
             Page firstpage = new Page();
@@ -153,7 +151,7 @@ namespace SAPR_Laba1
             }
             //Если первая страница получилась несвязанной ни с чем и на ней только начальный граф символ
             if (pages.Count == 1 && pages[0].graphSymbols[0].incomingNodes.Count ==0 && pages[0].graphSymbols[0].outgoingNodes.Count ==0)
-                throw new Exception("Введена пустая граф схема");
+                throw new Exception("Введена пустая или несвязная граф схема");
             return pages;
         }
         

@@ -50,7 +50,8 @@ namespace SAPR_Laba1
             this.beginNodeNumber.Margin = new System.Windows.Forms.Padding(4);
             this.beginNodeNumber.Name = "beginNodeNumber";
             this.beginNodeNumber.Size = new System.Drawing.Size(160, 22);
-            this.beginNodeNumber.TabIndex = 0;
+            this.beginNodeNumber.TabIndex = 0;            
+            this.beginNodeNumber.ValueChanged += new System.EventHandler(this.beginNodeNumber_ValueChanged);
             // 
             // beginNodelbl
             // 

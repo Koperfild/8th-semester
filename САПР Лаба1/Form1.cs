@@ -46,7 +46,8 @@ namespace SAPR_Laba1
         {
             InitializeComponent();
             data = new Data(this);
-            foreach(DataGridViewRow row in this.DataGridView.Rows)
+            this.beginNodeNumber.Maximum = DataGridView.ColumnCount - 1;
+            foreach (DataGridViewRow row in this.DataGridView.Rows)
             {
                 row.HeaderCell.Value = row.Index.ToString();
             }
@@ -60,14 +61,27 @@ namespace SAPR_Laba1
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            try {
-                AlgorithmScheme algo = new AlgorithmScheme(Data.IncidenceMatrix, (int)BeginNodeNumber.Value, (int)P.Value);
-                ResultForm fres = new ResultForm(algo);
-                fres.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Try again!");
+            string error = null;
+            if (this.p.Value < 0)
+                error = "Wrong max count of graph symbols per page";
+            else if (this.beginNodeNumber.Value < 0 || this.beginNodeNumber.Value >= this.dataGridView.ColumnCount)
+                error = "Not specified beginNode";
+            else if (this.dataGridView.ColumnCount != this.dataGridView.RowCount)
+                error = "Incidence matrix is not square";
+
+            if (error != null)
+                MessageBox.Show(error, "Try again");
+            else {
+                try
+                {
+                    AlgorithmScheme algo = new AlgorithmScheme(Data.IncidenceMatrix, (int)BeginNodeNumber.Value, (int)P.Value);
+                    ResultForm fres = new ResultForm(algo);
+                    fres.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Try again!");
+                }
             }
         }
 
@@ -84,6 +98,13 @@ namespace SAPR_Laba1
                 row.Resizable = DataGridViewTriState.False;
             }
             DataGridView.ResumeLayout();
+        }
+
+        private void beginNodeNumber_ValueChanged(object sender, EventArgs e)
+        {
+            var obj = sender as NumericUpDown;
+            if (obj.Value >= this.DataGridView.ColumnCount)
+                MessageBox.Show("Invalid start node number", "Try again!");
         }
     }
 }
