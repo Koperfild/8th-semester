@@ -13,6 +13,7 @@ namespace SAPR_Laba1
         // Form1 f;
         public int[,] IncidenceMatrix { get; set; }
         public byte beginNodeNumber { get; set; }
+        
         /*public FormData(Form1 f1)
         {
             this.f = f1;

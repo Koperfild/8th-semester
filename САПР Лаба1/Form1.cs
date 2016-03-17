@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using Microsoft.Office.Interop.Excel;
 
 namespace SAPR_Laba1
 {
@@ -39,7 +40,7 @@ namespace SAPR_Laba1
             get { return arr; }
             set { arr = value; }
         }
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -95,7 +96,7 @@ namespace SAPR_Laba1
                 try
                 {
                     AlgorithmScheme algo = new AlgorithmScheme(data.IncidenceMatrix, (int)BeginNodeNumber.Value, (int)P.Value);
-                    ResultForm fres = new ResultForm(algo);
+                    ResultForm fres = new ResultForm();
                     fres.Show();
                 }
                 catch (Exception ex)
@@ -194,7 +195,7 @@ namespace SAPR_Laba1
                     string[] vals = line.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
                     for (int i = 0; i < vals.Length; i++)
                     {
-                        int edinichka = int.Parse(vals[i])-1;
+                        int edinichka = int.Parse(vals[i]) - 1;
                         matrix[count, edinichka] = 1;
                     }
                     count += 1;
@@ -210,5 +211,46 @@ namespace SAPR_Laba1
 
             }
         }
+
+        private void resultstofile_Click(object sender, EventArgs e)
+        {
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter("results.txt"))
+            {
+                for (int i = 0; i < AlgorithmScheme.pages.Count; i++)
+                {
+                    file.WriteLine("Страница № " + AlgorithmScheme.pages[i].number.ToString() + "\n");
+                    for (int j = 0; j < AlgorithmScheme.pages[i].graphSymbols.Count; j++)
+                        file.WriteLine("Узел " + AlgorithmScheme.pages[i].graphSymbols[j].ID + "   Kcv = " + AlgorithmScheme.pages[i].graphSymbols[j].Kcv.ToString("0.000") + "\n");
+                }
+            }
+            /*SaveAs не хочет сохранять
+    private void uploadrestoExcel_Click(object sender, EventArgs e)
+    {
+       Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+       app.Visible = false;
+       app.Workbooks.Add();
+       Worksheet worksheet = (Worksheet)app.ActiveSheet;
+       int index = 1;
+       worksheet.Cells[1, 1] = "GraphSymbol";
+       worksheet.Cells[1, 2] = "Kcv";
+       for (int i=0;i < AlgorithmScheme.pages.Count;i++)
+       {
+           worksheet.Cells[index, 1] = AlgorithmScheme.pages[i].number;
+           index += 1;
+           for (int j = 0; j < AlgorithmScheme.pages[i].graphSymbols.Count; j++)
+           {
+               worksheet.Cells[index, 1] = AlgorithmScheme.pages[i].graphSymbols[j].ID;
+               worksheet.Cells[index, 2] = AlgorithmScheme.pages[i].graphSymbols[j].Kcv;
+               index++;
+           }
+       }
+       worksheet.SaveAs("E:\\GitHub\\8th-semester-SAPR-Laba1\\САПР Лаба1\\bin\\Debug\\results.xlsx", Microsoft.Office.Interop.Excel.XlFileFormat.xlExcel12, Type.Missing, Type.Missing,
+    false, false);
+       app.Quit();
+    }
+    */
+        }
+
     }
 }

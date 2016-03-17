@@ -42,6 +42,8 @@ namespace SAPR_Laba1
             this.ReadBtn = new System.Windows.Forms.Button();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.uploadrestoExcel = new System.Windows.Forms.Button();
+            this.resultstofile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.beginNodeNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -88,7 +90,7 @@ namespace SAPR_Laba1
             // 
             this.button1.BackColor = System.Drawing.Color.Fuchsia;
             this.button1.Font = new System.Drawing.Font("Impact", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(663, 519);
+            this.button1.Location = new System.Drawing.Point(593, 504);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 66);
             this.button1.TabIndex = 3;
@@ -152,7 +154,7 @@ namespace SAPR_Laba1
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(821, 514);
+            this.button2.Location = new System.Drawing.Point(808, 503);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 9;
@@ -160,12 +162,33 @@ namespace SAPR_Laba1
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // uploadrestoExcel
+            // 
+            this.uploadrestoExcel.Location = new System.Drawing.Point(833, 546);
+            this.uploadrestoExcel.Name = "uploadrestoExcel";
+            this.uploadrestoExcel.Size = new System.Drawing.Size(75, 48);
+            this.uploadrestoExcel.TabIndex = 10;
+            this.uploadrestoExcel.Text = "upload to Excel";
+            this.uploadrestoExcel.UseVisualStyleBackColor = true;
+            // 
+            // resultstofile
+            // 
+            this.resultstofile.Location = new System.Drawing.Point(723, 546);
+            this.resultstofile.Name = "resultstofile";
+            this.resultstofile.Size = new System.Drawing.Size(89, 48);
+            this.resultstofile.TabIndex = 11;
+            this.resultstofile.Text = "results to file";
+            this.resultstofile.UseVisualStyleBackColor = true;
+            this.resultstofile.Click += new System.EventHandler(this.resultstofile_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Chartreuse;
             this.ClientSize = new System.Drawing.Size(908, 596);
+            this.Controls.Add(this.resultstofile);
+            this.Controls.Add(this.uploadrestoExcel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.ReadBtn);
@@ -204,6 +227,8 @@ namespace SAPR_Laba1
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.Button ReadBtn;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button uploadrestoExcel;
+        private System.Windows.Forms.Button resultstofile;
     }
 }
 

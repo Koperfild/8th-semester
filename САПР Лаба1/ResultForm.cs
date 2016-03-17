@@ -12,32 +12,32 @@ namespace SAPR_Laba1
 {
     public partial class ResultForm : Form
     {
-        public ResultForm(AlgorithmScheme algo)
+        public ResultForm()
         {
             InitializeComponent();
-            this.algo = algo;
+            //this.algo = algo;
             FillText();
         }
         public void FillText()
         {
             
-            for (int i=0;i<algo.pages.Count;i++)
+            for (int i=0;i<AlgorithmScheme.pages.Count;i++)
             {
                 richTextBox1.Text += "Страница " + i.ToString() + "\n";
-                for (int j=0;j<algo.pages[i].graphSymbols.Count;j++)
+                for (int j=0;j< AlgorithmScheme.pages[i].graphSymbols.Count;j++)
                 {
-                    richTextBox1.Text += "Из узла " + algo.pages[i].graphSymbols[j].ID.ToString() + "\n        выходят   ";
-                    for (int k=0; k < algo.pages[i].graphSymbols[j].outgoingNodes.Count;k++)
+                    richTextBox1.Text += "Из узла " + AlgorithmScheme.pages[i].graphSymbols[j].ID.ToString() + "\n        выходят   ";
+                    for (int k=0; k < AlgorithmScheme.pages[i].graphSymbols[j].outgoingNodes.Count;k++)
                     {
-                        richTextBox1.Text += algo.pages[i].graphSymbols[j].outgoingNodes[k].ID.ToString() + "  ";
+                        richTextBox1.Text += AlgorithmScheme.pages[i].graphSymbols[j].outgoingNodes[k].ID.ToString() + "  ";
                     }
                     richTextBox1.Text += "\n        входят   ";
-                    for (int k=0;k<algo.pages[i].graphSymbols[j].incomingNodes.Count;k++)
+                    for (int k=0;k< AlgorithmScheme.pages[i].graphSymbols[j].incomingNodes.Count;k++)
                     {
-                        richTextBox1.Text += algo.pages[i].graphSymbols[j].incomingNodes[k].ID.ToString() + " ";
+                        richTextBox1.Text += AlgorithmScheme.pages[i].graphSymbols[j].incomingNodes[k].ID.ToString() + " ";
                     }
                     richTextBox1.Text += "\n";
-                    richTextBox1.Text += "Kcv = " + algo.pages[i].graphSymbols[j].Kcv;
+                    richTextBox1.Text += "Kcv = " + AlgorithmScheme.pages[i].graphSymbols[j].Kcv;
                     richTextBox1.Text += "\n";
                 }
             }

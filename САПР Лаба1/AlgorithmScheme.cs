@@ -8,7 +8,7 @@ namespace SAPR_Laba1
 {
     public class AlgorithmScheme
     {
-        public List<Page> pages { get; set; }
+        public static List<Page> pages { get; set; }
         public AlgorithmScheme() { }
         public AlgorithmScheme(int[,] IncidenceMatrix, int beginNodeNumber, int p)
         {
@@ -102,7 +102,7 @@ namespace SAPR_Laba1
             Node beginNode = nodes[beginNodeNumber];
             try
             {
-                this.pages = splitNodesToPages(beginNode, p);
+                pages = splitNodesToPages(beginNode, p);
             }
             catch(Exception ex)
             {
@@ -179,21 +179,25 @@ namespace SAPR_Laba1
         /// <returns>Коэф-т связности 0<=Kcv<=1</returns>
         public static double Kcv(Page currpage, Node nodetocalc)
         {
-            int AllNodeAssociationsQuantity = nodetocalc.outgoingNodes.Count + nodetocalc.incomingNodes.Count;
+            //int AllNodeAssociationsQuantity = nodetocalc.outgoingNodes.Count + nodetocalc.incomingNodes.Count;
+            int dminus = 0;//dminus спорно как считать в учебнике картинка противоречит. Там просто Е\Ек а не сумма Еr по r=1..к
             int dplus=0;
             for (int i=0;i<nodetocalc.incomingNodes.Count;i++)
             {
-                if (nodetocalc.incomingNodes[i].page == currpage)
+                if (nodetocalc.incomingNodes[i].page == null)
+                    dminus += 1;
+                else if (nodetocalc.incomingNodes[i].page == currpage)
                     dplus += 1;
-
             }
             for (int i=0;i<nodetocalc.outgoingNodes.Count;i++)
             {
+                if (nodetocalc.outgoingNodes[i].page == null)
+                    dminus += 1;
                 if (nodetocalc.outgoingNodes[i].page == currpage)
                     dplus += 1;
             }
             double res;
-            res = (double)dplus / AllNodeAssociationsQuantity;
+            res = (double)dplus / (double)(dminus+dplus);
             return res;
         }
         /// <summary>
