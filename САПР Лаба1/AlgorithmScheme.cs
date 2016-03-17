@@ -212,10 +212,12 @@ namespace SAPR_Laba1
                 for (int j=0;j<page.graphSymbols[i].outgoingNodes.Count;j++)
                 {
                     //если графсимвол связанный с текущим графсимволом принадлежит какой-либо странице,то пропускаем, т.к. ищем только внешние узлы
-                    if (page.graphSymbols[i].outgoingNodes[j].page != null)
-                        continue;
-                    outFromPageNodes.Add(page.graphSymbols[i].outgoingNodes[j]);
+                    if (page.graphSymbols[i].outgoingNodes[j].page == null)
+                        outFromPageNodes.Add(page.graphSymbols[i].outgoingNodes[j]);
                 }
+                for (int j = 0; j < page.graphSymbols[i].incomingNodes.Count; j++)
+                    if (page.graphSymbols[i].incomingNodes[j].page == null)
+                        outFromPageNodes.Add(page.graphSymbols[i].incomingNodes[j]);
 
             }
             return outFromPageNodes;
