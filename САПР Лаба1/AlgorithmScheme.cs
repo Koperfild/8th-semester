@@ -79,10 +79,10 @@ namespace SAPR_Laba1
         {
             List<Node> nodes = new List<Node>();
             //Делаем список всех узлов
-            for (int i=0;i<IncidenceMatrix.GetLength(0);i++)
-                for (int j=0;j<IncidenceMatrix.GetLength(1);j++)
-                    //Присваиваем каждому узлу ID в соответствие с матрицей инцидентности
-                    nodes.Add(new Node() { ID = i*IncidenceMatrix.GetLength(0) + j});
+            for (int i = 0; i < IncidenceMatrix.GetLength(1); i++)
+                //for (int j=0;j<IncidenceMatrix.GetLength(1);j++)
+                //Присваиваем каждому узлу ID в соответствие с матрицей инцидентности
+                nodes.Add(new Node() { ID = i });
 
             //По матрице инцидентности прописываем связи между узлами
             for (int i = 0; i < IncidenceMatrix.GetLength(0); i++)
@@ -216,6 +216,7 @@ namespace SAPR_Laba1
                         continue;
                     outFromPageNodes.Add(page.graphSymbols[i].outgoingNodes[j]);
                 }
+
             }
             return outFromPageNodes;
         }
