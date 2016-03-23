@@ -44,7 +44,7 @@ namespace SAPR_Laba1
         public Form1()
         {
             InitializeComponent();
-            data = new Data(this);
+            data = new Data();
             //Привязка данных к data
             string[] columnNumbers = new string[data.IncidenceMatrix.GetLength(1)];
             for (int i = 0; i < columnNumbers.Length; i++)
@@ -55,7 +55,7 @@ namespace SAPR_Laba1
             //Привязываем матрицу инцидентности к dataGridView
             DataGridView.DataSource = arr;//BindingSource1;
             //Привязываем номер начального узла (на форме) к свойству beginNodeNumber
-            BeginNodeNumber.DataBindings.Add("Value", this, "data.beginNodeNumber");
+            BeginNodeNumber.DataBindings.Add("Value", this.data, "beginNodeNumber");
 
 
             this.beginNodeNumber.Maximum = DataGridView.ColumnCount - 1;
@@ -83,7 +83,7 @@ namespace SAPR_Laba1
         private void button1_Click(object sender, EventArgs e)
         {
             string error = null;
-            if (this.p.Value < 0)
+            if (this.p.Value <= 0)
                 error = "Wrong max count of graph symbols per page";
             else if (this.beginNodeNumber.Value < 0 || this.beginNodeNumber.Value >= this.dataGridView.ColumnCount)
                 error = "Not specified beginNode";
@@ -128,7 +128,7 @@ namespace SAPR_Laba1
                 MessageBox.Show("Invalid start node number", "Try again!");
         }
 
-        private void SaveBtn_Click(object sender, EventArgs e)
+        private void SaveInMatrixFormat()//SaveBtn_Click(object sender, EventArgs e)
         {
             using (System.IO.StreamWriter file =
             new System.IO.StreamWriter("IncidenceMatrix.txt"))
@@ -143,8 +143,27 @@ namespace SAPR_Laba1
 
             }
         }
+        private void SaveInLineFormat()
+        {
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter("GraphInLines.txt"))
+            {
+                                   
+                file.WriteLine(this.dataGridView.Rows.Count.ToString());
+                int count = 0;
+                for (int i = 0; i < dataGridView.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dataGridView.Columns.Count; j++)
+                    {
+                        if (dataGridView.Rows[i].Cells[j].Value.ToString() == "1")
+                            file.Write(i.ToString() + " ");
+                    }
+                    file.WriteLine();
+                }
+            }
+        }
 
-        private void ReadBtn_Click(object sender, EventArgs e)
+        private void ReadBtn_Click()// object sender, EventArgs e)
         {
             using (System.IO.StreamReader file =
             new System.IO.StreamReader("IncidenceMatrix.txt"))
@@ -178,7 +197,7 @@ namespace SAPR_Laba1
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void readLineFormat()//button2_Click(object sender, EventArgs e)
         {
             using (System.IO.StreamReader file =
             new System.IO.StreamReader("inputByYarik&Co.txt"))
@@ -186,13 +205,18 @@ namespace SAPR_Laba1
                 string line;
 
                 int[,] matrix;
-                int matrixSize = 30;
+                int matrixSize = int.Parse(file.ReadLine());
 
                 matrix = new int[matrixSize, matrixSize];
                 int count = 0;
                 while ((line = file.ReadLine()) != null && count < matrixSize)
                 {
                     string[] vals = line.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    //Если пустая строчка, значит, из данного узла нет исходящих дуг в другие узлы
+                    if (vals.Length == 0)
+                    {
+                        continue;
+                    }
                     for (int i = 0; i < vals.Length; i++)
                     {
                         int edinichka = int.Parse(vals[i]) - 1;
@@ -224,33 +248,49 @@ namespace SAPR_Laba1
                         file.WriteLine("Узел " + AlgorithmScheme.pages[i].graphSymbols[j].ID + "   Kcv = " + AlgorithmScheme.pages[i].graphSymbols[j].Kcv.ToString("0.000") + "\n");
                 }
             }
-            /*SaveAs не хочет сохранять
-    private void uploadrestoExcel_Click(object sender, EventArgs e)
-    {
-       Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
-       app.Visible = false;
-       app.Workbooks.Add();
-       Worksheet worksheet = (Worksheet)app.ActiveSheet;
-       int index = 1;
-       worksheet.Cells[1, 1] = "GraphSymbol";
-       worksheet.Cells[1, 2] = "Kcv";
-       for (int i=0;i < AlgorithmScheme.pages.Count;i++)
-       {
-           worksheet.Cells[index, 1] = AlgorithmScheme.pages[i].number;
-           index += 1;
-           for (int j = 0; j < AlgorithmScheme.pages[i].graphSymbols.Count; j++)
-           {
-               worksheet.Cells[index, 1] = AlgorithmScheme.pages[i].graphSymbols[j].ID;
-               worksheet.Cells[index, 2] = AlgorithmScheme.pages[i].graphSymbols[j].Kcv;
-               index++;
-           }
-       }
-       worksheet.SaveAs("E:\\GitHub\\8th-semester-SAPR-Laba1\\САПР Лаба1\\bin\\Debug\\results.xlsx", Microsoft.Office.Interop.Excel.XlFileFormat.xlExcel12, Type.Missing, Type.Missing,
-    false, false);
-       app.Quit();
-    }
-    */
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (this.radioButton1.Checked == true)
+                ReadBtn_Click();
+            else
+                readLineFormat();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (this.radioButton3.Checked == true)
+                SaveInMatrixFormat();
+            else
+                SaveInLineFormat();
+        }
+        /*SaveAs не хочет сохранять
+private void uploadrestoExcel_Click(object sender, EventArgs e)
+{
+Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+app.Visible = false;
+app.Workbooks.Add();
+Worksheet worksheet = (Worksheet)app.ActiveSheet;
+int index = 1;
+worksheet.Cells[1, 1] = "GraphSymbol";
+worksheet.Cells[1, 2] = "Kcv";
+for (int i=0;i < AlgorithmScheme.pages.Count;i++)
+{
+worksheet.Cells[index, 1] = AlgorithmScheme.pages[i].number;
+index += 1;
+for (int j = 0; j < AlgorithmScheme.pages[i].graphSymbols.Count; j++)
+{
+worksheet.Cells[index, 1] = AlgorithmScheme.pages[i].graphSymbols[j].ID;
+worksheet.Cells[index, 2] = AlgorithmScheme.pages[i].graphSymbols[j].Kcv;
+index++;
+}
+}
+worksheet.SaveAs("E:\\GitHub\\8th-semester-SAPR-Laba1\\САПР Лаба1\\bin\\Debug\\results.xlsx", Microsoft.Office.Interop.Excel.XlFileFormat.xlExcel12, Type.Missing, Type.Missing,
+false, false);
+app.Quit();
+}
+*/
 
     }
 }

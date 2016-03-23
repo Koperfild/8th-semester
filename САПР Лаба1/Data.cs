@@ -19,8 +19,8 @@ namespace SAPR_Laba1
             this.f = f1;
         }
         */
-        public Data() { }
-        public Data(Form1 f1)
+        //public Data() { }
+        public Data()
         {
             IncidenceMatrix = new int[,]
             {

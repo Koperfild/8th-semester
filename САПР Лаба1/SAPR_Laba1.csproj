@@ -36,7 +36,8 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Mommo.Data">
+    <Reference Include="Mommo.Data, Version=1.0.1467.7686, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>.\Mommo.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
