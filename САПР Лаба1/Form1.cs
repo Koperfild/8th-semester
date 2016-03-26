@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using Microsoft.Office.Interop.Excel;
+using Microsoft.Msagl;
+using Microsoft.Msagl.GraphViewerGdi;
+using Microsoft.Msagl.Drawing;
+using System.Windows.Shapes;
 
 namespace SAPR_Laba1
 {
@@ -71,6 +75,13 @@ namespace SAPR_Laba1
             this.DataGridView.AutoSizeColumnsMode =
                 DataGridViewAutoSizeColumnsMode.AllCells;
 
+            /*
+            Microsoft.Msagl.GraphViewerGdi.GViewer viewer = BuildGraph();
+            this.SuspendLayout();
+
+            this.Controls.Add(viewer);
+            this.ResumeLayout();
+            */
             /*Thread thrd = new Thread(() =>
             {
                 Random rnd = new Random(11020);
@@ -79,6 +90,46 @@ namespace SAPR_Laba1
             });
             thrd.Start();
             */
+        }
+        private Microsoft.Msagl.GraphViewerGdi.GViewer BuildGraph()
+        {
+            Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
+            //Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
+            Microsoft.Msagl.Core.Layout.GeometryGraph graph = new Microsoft.Msagl.Core.Layout.GeometryGraph();
+            bool nodeExist = false;
+
+
+            //Составляем список всех узлов
+            List<Microsoft.Msagl.Core.Layout.Node> nodes = new List<Microsoft.Msagl.Core.Layout.Node>();
+            for (int i = 0; i < this.dataGridView.Rows.Count; i++)
+            {
+                nodes.Add(new Microsoft.Msagl.Core.Layout.Node(Microsoft.Msagl.Core.Geometry.Curves.CurveFactory.CreateEllipse(10, 10, new Microsoft.Msagl.Core.Geometry.Point()), i.ToString());
+            }
+            for (int i = 0; i < this.dataGridView.Rows.Count; i++)
+            {
+                for (int j = 0; j < this.dataGridView.Columns.Count; j++)
+                {
+                    if (this.dataGridView.Rows[i].Cells[j].Value.ToString() == "1")
+                    {
+                        Microsoft.Msagl.Core.Layout.Edge edge = new Microsoft.Msagl.Core.Layout.Edge(nodes[i], nodes[j]);
+                        graph.add
+                        if (!nodeExist)
+                        {
+                            Microsoft.Msagl.Core.Layout.Node n0 = new Microsoft.Msagl.Core.Layout.Node(Microsoft.Msagl.Core.Geometry.Curves.CurveFactory.CreateEllipse(10, 10, new Microsoft.Msagl.Core.Geometry.Point()), "a");
+                            //Microsoft.Msagl.Drawing.Node node = new Node("jjj") {i {//= new Node("ф") { new System.Windows.Shapes.Ellipse() { Height = 10, Width = 10 }, new System.Drawing.Point())};
+                        }
+                        graph.AddEdge(i.ToString(), j.ToString());
+                    }
+                }
+            }
+            graph.AddEdge
+            foreach(var node in graph.Nodes)
+            {
+                node.Height = 10.0;
+                node.Width = 10.0;
+            }
+            viewer.Graph = graph;
+            return viewer;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -256,6 +307,13 @@ namespace SAPR_Laba1
                 ReadBtn_Click();
             else
                 readLineFormat();
+            Graph graphForm = new Graph();
+            Microsoft.Msagl.GraphViewerGdi.GViewer viewer = BuildGraph();
+            graphForm.SuspendLayout();
+            viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            graphForm.Controls.Add(viewer);
+            graphForm.ResumeLayout();
+            graphForm.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)
