@@ -90,9 +90,37 @@ namespace SAPR_Laba1
             });
             thrd.Start();
             */
+            
         }
-        private Microsoft.Msagl.GraphViewerGdi.GViewer BuildGraph()
+        private Microsoft.Msagl.Drawing.Graph BuildGraph()
         {
+            Microsoft.Msagl.Drawing.Graph g = new Microsoft.Msagl.Drawing.Graph();
+            for (int i = 0; i < this.dataGridView.Rows.Count; i++)
+            {
+                for (int j = 0; j < this.dataGridView.Columns.Count; j++)
+                {
+                    if (this.dataGridView.Rows[i].Cells[j].Value.ToString() == "1")
+                    {
+                        g.AddEdge(i.ToString(), j.ToString());
+                    }
+                }
+
+            }
+            return g;
+        }
+        /*
+                        Microsoft.Msagl.Core.Layout.Edge edge = new Microsoft.Msagl.Core.Layout.Edge(nodes[i], nodes[j]);
+                        graph.add
+                        if (!nodeExist)
+                        {
+                            Microsoft.Msagl.Core.Layout.Node n0 = new Microsoft.Msagl.Core.Layout.Node(Microsoft.Msagl.Core.Geometry.Curves.CurveFactory.CreateEllipse(10, 10, new Microsoft.Msagl.Core.Geometry.Point()), "a");
+                            //Microsoft.Msagl.Drawing.Node node = new Node("jjj") {i {//= new Node("ф") { new System.Windows.Shapes.Ellipse() { Height = 10, Width = 10 }, new System.Drawing.Point())};
+                        }
+                        graph.AddEdge(i.ToString(), j.ToString());
+                    }
+                }
+            }
+            /*
             Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
             //Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
             Microsoft.Msagl.Core.Layout.GeometryGraph graph = new Microsoft.Msagl.Core.Layout.GeometryGraph();
@@ -130,7 +158,8 @@ namespace SAPR_Laba1
             }
             viewer.Graph = graph;
             return viewer;
-        }
+            */
+        
         private void button1_Click(object sender, EventArgs e)
         {
             string error = null;
@@ -307,13 +336,8 @@ namespace SAPR_Laba1
                 ReadBtn_Click();
             else
                 readLineFormat();
-            Graph graphForm = new Graph();
-            Microsoft.Msagl.GraphViewerGdi.GViewer viewer = BuildGraph();
-            graphForm.SuspendLayout();
-            viewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            graphForm.Controls.Add(viewer);
-            graphForm.ResumeLayout();
-            graphForm.ShowDialog();
+            ShowGraph();
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -322,6 +346,46 @@ namespace SAPR_Laba1
                 SaveInMatrixFormat();
             else
                 SaveInLineFormat();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ShowGraph();
+        }
+        private void ShowGraph()
+        {
+            Graph graphForm = new Graph(this.data);
+            graphForm.Show();
+        }
+
+        /// <summary>
+        /// Создаёт рандомный граф
+        /// </summary>
+        /// <param name="nodeCount">Число узлов в графе</param>
+        /// <param name="maxEdgeCount">Максимальное число исходящих из каждого узла рёбер</param>
+        private void GenerateGraph(int nodeCount,int maxEdgeCount)
+        {
+            nodeCount = 25;
+            maxEdgeCount = 4;
+            Random rnd = new Random();
+            int[,] incidenceMatrix = new int[nodeCount, nodeCount];
+            for (int i=0;i<nodeCount;i++)
+            {
+                //Пусть у узла будет максимум 4 исходящих ребра
+                int nodeEdgesCount = rnd.Next(maxEdgeCount) + 1;
+
+                for (int j=0;j<nodeEdgesCount;j++)
+                {
+                    //Генерируем исходящие рёбра
+                    incidenceMatrix[i, rnd.Next(nodeCount)] = 1;
+                }
+            }
+            this.data.IncidenceMatrix = incidenceMatrix;
+            string[] columnNumbers = new string[this.data.IncidenceMatrix.GetLength(1)];
+            for (int i = 0; i < columnNumbers.Length; i++)
+                columnNumbers[i] = i.ToString();
+            this.arr = new Mommo.Data.ArrayDataView(data.IncidenceMatrix);
+            this.DataGridView.DataSource = arr;//BindingSource1;  
         }
         /*SaveAs не хочет сохранять
 private void uploadrestoExcel_Click(object sender, EventArgs e)

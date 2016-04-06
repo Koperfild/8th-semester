@@ -35,18 +35,20 @@
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.Lime;
             this.richTextBox1.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox1.Location = new System.Drawing.Point(4, 2);
+            this.richTextBox1.Location = new System.Drawing.Point(3, 2);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(400, 415);
+            this.richTextBox1.Size = new System.Drawing.Size(497, 668);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
             // ResultForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 419);
+            this.ClientSize = new System.Drawing.Size(501, 671);
             this.Controls.Add(this.richTextBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ResultForm";
             this.Text = "ResultForm";
             this.ResumeLayout(false);
