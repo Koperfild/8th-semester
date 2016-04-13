@@ -226,5 +226,27 @@ namespace SAPR_Laba1
             }
             return outFromPageNodes;
         }
+        public static int Criterion()
+        {
+            int count = 0;
+            Node node = new Node();
+            for (int i=0;i<pages.Count;i++)
+            {
+                for (int k=0;k<pages[i].graphSymbols.Count;k++)
+                {
+                    for (int l=0;l< pages[i].graphSymbols[k].outgoingNodes.Count;l++)
+                    {
+                        if (pages[i].graphSymbols[k].outgoingNodes[l].page.number > pages[i].number)//Можно конечно справа написать просто i, но если нумерация будет не от нуля в pages[i].number то возникнет путаница
+                            count++;
+                    }
+                    for (int l = 0; l < pages[i].graphSymbols[k].incomingNodes.Count; l++)
+                    {
+                        if (pages[i].graphSymbols[k].incomingNodes[l].page.number > pages[i].number)//Можно конечно справа написать просто i, но если нумерация будет не от нуля в pages[i].number то возникнет путаница
+                            count++;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }

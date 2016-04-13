@@ -42,5 +42,9 @@ namespace SAPR_Laba1
                 }
             }
         }
+        public void WriteCriterionValue()
+        {
+            richTextBox1.Text += "\n" + AlgorithmScheme.Criterion().ToString();
+        }
     }
 }
