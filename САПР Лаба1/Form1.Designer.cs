@@ -62,18 +62,20 @@ namespace SAPR_Laba1
             // 
             this.beginNodeNumber.BackColor = System.Drawing.Color.White;
             this.beginNodeNumber.Font = new System.Drawing.Font("Impact", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.beginNodeNumber.Location = new System.Drawing.Point(368, 467);
+            this.beginNodeNumber.Location = new System.Drawing.Point(491, 575);
+            this.beginNodeNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.beginNodeNumber.Name = "beginNodeNumber";
-            this.beginNodeNumber.Size = new System.Drawing.Size(140, 24);
+            this.beginNodeNumber.Size = new System.Drawing.Size(187, 28);
             this.beginNodeNumber.TabIndex = 0;
             // 
             // beginNodelbl
             // 
             this.beginNodelbl.AutoSize = true;
             this.beginNodelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.beginNodelbl.Location = new System.Drawing.Point(363, 402);
+            this.beginNodelbl.Location = new System.Drawing.Point(484, 495);
+            this.beginNodelbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.beginNodelbl.Name = "beginNodelbl";
-            this.beginNodelbl.Size = new System.Drawing.Size(300, 29);
+            this.beginNodelbl.Size = new System.Drawing.Size(390, 36);
             this.beginNodelbl.TabIndex = 1;
             this.beginNodelbl.Text = "Начальный граф символ";
             // 
@@ -83,10 +85,11 @@ namespace SAPR_Laba1
             this.dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView.Location = new System.Drawing.Point(7, 30);
+            this.dataGridView.Location = new System.Drawing.Point(9, 37);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 77;
-            this.dataGridView.Size = new System.Drawing.Size(1000, 347);
+            this.dataGridView.Size = new System.Drawing.Size(1333, 427);
             this.dataGridView.TabIndex = 2;
             this.dataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView_DataBindingComplete);
             // 
@@ -94,10 +97,10 @@ namespace SAPR_Laba1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(807, 461);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(910, 512);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(252, 123);
+            this.button1.Size = new System.Drawing.Size(336, 151);
             this.button1.TabIndex = 3;
             this.button1.Text = "Запуск";
             this.button1.UseVisualStyleBackColor = false;
@@ -107,10 +110,10 @@ namespace SAPR_Laba1
             // 
             this.p.BackColor = System.Drawing.Color.White;
             this.p.Font = new System.Drawing.Font("Impact", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.p.Location = new System.Drawing.Point(26, 462);
-            this.p.Margin = new System.Windows.Forms.Padding(2);
+            this.p.Location = new System.Drawing.Point(35, 569);
+            this.p.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.p.Name = "p";
-            this.p.Size = new System.Drawing.Size(140, 24);
+            this.p.Size = new System.Drawing.Size(187, 28);
             this.p.TabIndex = 4;
             this.p.Value = new decimal(new int[] {
             3,
@@ -122,10 +125,9 @@ namespace SAPR_Laba1
             // 
             this.GraphSymbolsCountLabel.AutoSize = true;
             this.GraphSymbolsCountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.GraphSymbolsCountLabel.Location = new System.Drawing.Point(21, 402);
-            this.GraphSymbolsCountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.GraphSymbolsCountLabel.Location = new System.Drawing.Point(28, 495);
             this.GraphSymbolsCountLabel.Name = "GraphSymbolsCountLabel";
-            this.GraphSymbolsCountLabel.Size = new System.Drawing.Size(336, 58);
+            this.GraphSymbolsCountLabel.Size = new System.Drawing.Size(431, 72);
             this.GraphSymbolsCountLabel.TabIndex = 5;
             this.GraphSymbolsCountLabel.Text = "Максимальное количество\nграф символов на страницу";
             // 
@@ -133,20 +135,19 @@ namespace SAPR_Laba1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(8, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(11, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(251, 29);
+            this.label1.Size = new System.Drawing.Size(315, 36);
             this.label1.TabIndex = 6;
             this.label1.Text = "Матрица смежности";
             // 
             // resultstofile
             // 
             this.resultstofile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.resultstofile.Location = new System.Drawing.Point(627, 530);
-            this.resultstofile.Margin = new System.Windows.Forms.Padding(2);
+            this.resultstofile.Location = new System.Drawing.Point(828, 667);
+            this.resultstofile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resultstofile.Name = "resultstofile";
-            this.resultstofile.Size = new System.Drawing.Size(110, 93);
+            this.resultstofile.Size = new System.Drawing.Size(147, 114);
             this.resultstofile.TabIndex = 11;
             this.resultstofile.Text = "Сохранить результаты";
             this.resultstofile.UseVisualStyleBackColor = true;
@@ -158,18 +159,21 @@ namespace SAPR_Laba1
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(26, 530);
+            this.groupBox1.Location = new System.Drawing.Point(35, 652);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(267, 123);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Данные в формате";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(7, 66);
+            this.button3.Location = new System.Drawing.Point(9, 81);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(187, 27);
+            this.button3.Size = new System.Drawing.Size(249, 33);
             this.button3.TabIndex = 2;
             this.button3.Text = "Читать из файла";
             this.button3.UseVisualStyleBackColor = true;
@@ -178,9 +182,10 @@ namespace SAPR_Laba1
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(7, 44);
+            this.radioButton2.Location = new System.Drawing.Point(9, 54);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(73, 24);
+            this.radioButton2.Size = new System.Drawing.Size(90, 29);
             this.radioButton2.TabIndex = 1;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Строк";
@@ -190,9 +195,10 @@ namespace SAPR_Laba1
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(7, 20);
+            this.radioButton1.Location = new System.Drawing.Point(9, 25);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(181, 24);
+            this.radioButton1.Size = new System.Drawing.Size(230, 29);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Матрица смежности";
@@ -204,18 +210,21 @@ namespace SAPR_Laba1
             this.groupBox2.Controls.Add(this.radioButton4);
             this.groupBox2.Controls.Add(this.radioButton3);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox2.Location = new System.Drawing.Point(368, 523);
+            this.groupBox2.Location = new System.Drawing.Point(491, 644);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(267, 123);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "В формате";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(7, 65);
+            this.button4.Location = new System.Drawing.Point(9, 80);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(187, 27);
+            this.button4.Size = new System.Drawing.Size(249, 33);
             this.button4.TabIndex = 3;
             this.button4.Text = "Запись в файл";
             this.button4.UseVisualStyleBackColor = true;
@@ -224,9 +233,10 @@ namespace SAPR_Laba1
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(6, 42);
+            this.radioButton4.Location = new System.Drawing.Point(8, 52);
+            this.radioButton4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(73, 24);
+            this.radioButton4.Size = new System.Drawing.Size(90, 29);
             this.radioButton4.TabIndex = 3;
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Строк";
@@ -236,9 +246,10 @@ namespace SAPR_Laba1
             // 
             this.radioButton3.AutoSize = true;
             this.radioButton3.Checked = true;
-            this.radioButton3.Location = new System.Drawing.Point(6, 19);
+            this.radioButton3.Location = new System.Drawing.Point(8, 23);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(181, 24);
+            this.radioButton3.Size = new System.Drawing.Size(230, 29);
             this.radioButton3.TabIndex = 3;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Матрица смежности";
@@ -247,17 +258,19 @@ namespace SAPR_Laba1
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 511);
+            this.label2.Location = new System.Drawing.Point(44, 629);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(46, 17);
             this.label2.TabIndex = 14;
             this.label2.Text = "label2";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(807, 402);
+            this.button2.Location = new System.Drawing.Point(1049, 478);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 15;
             this.button2.Text = "Show graph";
             this.button2.UseVisualStyleBackColor = true;
@@ -265,10 +278,10 @@ namespace SAPR_Laba1
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1178, 642);
+            this.ClientSize = new System.Drawing.Size(1284, 790);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox2);
@@ -282,6 +295,7 @@ namespace SAPR_Laba1
             this.Controls.Add(this.beginNodelbl);
             this.Controls.Add(this.beginNodeNumber);
             this.ForeColor = System.Drawing.Color.Black;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.beginNodeNumber)).EndInit();

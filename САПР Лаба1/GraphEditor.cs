@@ -74,7 +74,7 @@ namespace Editing {
             ValidateEditorDelegate = DefaultValidateEditor;
             CloseEditorDelegate = DefaultCloseEditor;
             ShowEditorDelegate(null);
-            treeImage = Image.FromFile("C:/Users/Julia1/Desktop/Женя/8 семестр/САПР Лаба1/САПР Лаба1/tree.jpg");
+            treeImage = Image.FromFile(@"E:\GitHub\8th-semester-SAPR-Laba1\САПР Лаба1\tree.jpg");
         }
 
         /// <summary>

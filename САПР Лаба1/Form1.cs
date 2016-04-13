@@ -280,7 +280,7 @@ namespace SAPR_Laba1
         private void readLineFormat()//button2_Click(object sender, EventArgs e)
         {
             using (System.IO.StreamReader file =
-            new System.IO.StreamReader("inputByYarik&Co.txt"))
+            new System.IO.StreamReader(@"E:\GitHub\8th-semester-SAPR-Laba1\САПР Лаба1\MyGraph-25-Nodes.txt"))
             {
                 string line;
 
@@ -293,13 +293,9 @@ namespace SAPR_Laba1
                 {
                     string[] vals = line.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
                     //Если пустая строчка, значит, из данного узла нет исходящих дуг в другие узлы
-                    if (vals.Length == 0)
-                    {
-                        continue;
-                    }
                     for (int i = 0; i < vals.Length; i++)
                     {
-                        int edinichka = int.Parse(vals[i]) - 1;
+                        int edinichka = int.Parse(vals[i]);
                         matrix[count, edinichka] = 1;
                     }
                     count += 1;
