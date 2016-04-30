@@ -63,7 +63,7 @@ namespace SAPR_Laba1
             this.beginNodeNumber.BackColor = System.Drawing.Color.White;
             this.beginNodeNumber.Font = new System.Drawing.Font("Impact", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.beginNodeNumber.Location = new System.Drawing.Point(491, 575);
-            this.beginNodeNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.beginNodeNumber.Margin = new System.Windows.Forms.Padding(4);
             this.beginNodeNumber.Name = "beginNodeNumber";
             this.beginNodeNumber.Size = new System.Drawing.Size(187, 28);
             this.beginNodeNumber.TabIndex = 0;
@@ -86,7 +86,7 @@ namespace SAPR_Laba1
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dataGridView.Location = new System.Drawing.Point(9, 37);
-            this.dataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 77;
             this.dataGridView.Size = new System.Drawing.Size(1333, 427);
@@ -116,7 +116,7 @@ namespace SAPR_Laba1
             this.p.Size = new System.Drawing.Size(187, 28);
             this.p.TabIndex = 4;
             this.p.Value = new decimal(new int[] {
-            3,
+            10,
             0,
             0,
             0});
@@ -160,9 +160,9 @@ namespace SAPR_Laba1
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(35, 652);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(267, 123);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
@@ -171,7 +171,7 @@ namespace SAPR_Laba1
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(9, 81);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(249, 33);
             this.button3.TabIndex = 2;
@@ -183,7 +183,7 @@ namespace SAPR_Laba1
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(9, 54);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(90, 29);
             this.radioButton2.TabIndex = 1;
@@ -196,7 +196,7 @@ namespace SAPR_Laba1
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(9, 25);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(230, 29);
             this.radioButton1.TabIndex = 0;
@@ -211,9 +211,9 @@ namespace SAPR_Laba1
             this.groupBox2.Controls.Add(this.radioButton3);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(491, 644);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(267, 123);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
@@ -222,7 +222,7 @@ namespace SAPR_Laba1
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(9, 80);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(249, 33);
             this.button4.TabIndex = 3;
@@ -234,7 +234,7 @@ namespace SAPR_Laba1
             // 
             this.radioButton4.AutoSize = true;
             this.radioButton4.Location = new System.Drawing.Point(8, 52);
-            this.radioButton4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton4.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(90, 29);
             this.radioButton4.TabIndex = 3;
@@ -247,7 +247,7 @@ namespace SAPR_Laba1
             this.radioButton3.AutoSize = true;
             this.radioButton3.Checked = true;
             this.radioButton3.Location = new System.Drawing.Point(8, 23);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(230, 29);
             this.radioButton3.TabIndex = 3;
@@ -268,7 +268,7 @@ namespace SAPR_Laba1
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(1049, 478);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 15;
@@ -295,7 +295,7 @@ namespace SAPR_Laba1
             this.Controls.Add(this.beginNodelbl);
             this.Controls.Add(this.beginNodeNumber);
             this.ForeColor = System.Drawing.Color.Black;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.beginNodeNumber)).EndInit();

@@ -17,6 +17,7 @@ namespace SAPR_Laba1
             InitializeComponent();
             //this.algo = algo;
             FillText();
+            WriteCriterionValue();
         }
         public void FillText()
         {
@@ -44,7 +45,7 @@ namespace SAPR_Laba1
         }
         public void WriteCriterionValue()
         {
-            richTextBox1.Text += "\n" + AlgorithmScheme.Criterion().ToString();
+            richTextBox1.Text += "\nКритерий результата = " + AlgorithmScheme.Criterion().ToString();
         }
     }
 }

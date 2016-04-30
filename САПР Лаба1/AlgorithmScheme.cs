@@ -56,9 +56,16 @@ namespace SAPR_Laba1
                         int currNodeAssociations = nodes[i].incomingNodes.Count + nodes[i].outgoingNodes.Count;
                         int maxNodeAssociations = maxNode.incomingNodes.Count + maxNode.outgoingNodes.Count;
 
+                        if (currNodeAssociations == maxNodeAssociations)
+                        {
+                            if (nodes[i].ID < maxNode.ID)
+                                maxNode = nodes[i];
+                            continue;
+                        }
                         if (kcv1 > 0.5)
                             if (currNodeAssociations > maxNodeAssociations)
                                 maxNode = nodes[i];
+
 
                         if (kcv1 < 0.5)
                             if (currNodeAssociations < maxNodeAssociations)
@@ -68,6 +75,7 @@ namespace SAPR_Laba1
                 }
                 return maxNode;
             }
+           
         }
         /// <summary>
         /// 
@@ -229,7 +237,6 @@ namespace SAPR_Laba1
         public static int Criterion()
         {
             int count = 0;
-            Node node = new Node();
             for (int i=0;i<pages.Count;i++)
             {
                 for (int k=0;k<pages[i].graphSymbols.Count;k++)
@@ -237,16 +244,17 @@ namespace SAPR_Laba1
                     for (int l=0;l< pages[i].graphSymbols[k].outgoingNodes.Count;l++)
                     {
                         if (pages[i].graphSymbols[k].outgoingNodes[l].page.number > pages[i].number)//Можно конечно справа написать просто i, но если нумерация будет не от нуля в pages[i].number то возникнет путаница
-                            count++;
+                            count += pages[i].graphSymbols[k].outgoingNodes[l].page.number - pages[i].number;
                     }
                     for (int l = 0; l < pages[i].graphSymbols[k].incomingNodes.Count; l++)
                     {
                         if (pages[i].graphSymbols[k].incomingNodes[l].page.number > pages[i].number)//Можно конечно справа написать просто i, но если нумерация будет не от нуля в pages[i].number то возникнет путаница
-                            count++;
+                            count += pages[i].graphSymbols[k].incomingNodes[l].page.number - pages[i].number;
                     }
                 }
             }
             return count;
         }
+
     }
 }
